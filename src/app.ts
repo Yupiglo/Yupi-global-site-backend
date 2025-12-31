@@ -12,6 +12,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to Yupi Global API',
+    status: 'running',
+    health_check: '/health',
+    documentation: '/api/v1/docs' // Placeholder
+  });
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Yupi Global API is running' });
